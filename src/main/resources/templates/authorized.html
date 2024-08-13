@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://img.freepik.com/foto-gratis/primer-bunuelo-asperja-contra-amarillo-rosado-fondo-verde-menta_23-2148166168.jpg?t=st=1723508227~exp=1723511827~hmac=e69b8d73c4b262659609a4fd228735df89075d48a330993a7d9c318c60c4d4b9&w=1380') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar {
+            background-color: rgba(255, 79, 129, 0.8);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff4f81;
+        }
+
+        .btn-primary {
+            background-color: #ff4f81;
+            border: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff2a61;
+            transform: scale(1.05);
+        }
+
+        .text-center {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Inicio</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-link nav-link" style="padding: 0;">Cerrar Sesión</button>
+            </form>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center">Bienvenido a la pagina de administrador</h1>
+    <div class="text-center">
+        <a class="btn btn-primary" th:href="@{/crud}">Ejecutar Acci&oacute;n </a>
+    </div>
+    <div class="text-center">
+        <div>Este es el codigo recibido</div>
+        <h2 th:text="${param.code}"></h2>
+    </div>
+</div>
+</body>
+</html>
