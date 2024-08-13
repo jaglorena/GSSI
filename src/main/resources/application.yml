@@ -19,4 +19,4 @@ spring:
             client-name: client-app
         provider:
           spring:
-            issuer-uri: "http:/git 0"
+            issuer-uri: "http://127.0.0.1:9000"
