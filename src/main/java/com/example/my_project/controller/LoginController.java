@@ -24,7 +24,8 @@ public class LoginController {
     }
 
     @GetMapping("/admin")
-    public String admin() {
+    public String admin(@RequestParam String code) {
+        logger.info("Codigo recibido=" + code);
         return "admin";
     }
 

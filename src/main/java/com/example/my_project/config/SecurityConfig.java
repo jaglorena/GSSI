@@ -7,10 +7,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -22,7 +18,7 @@ public class SecurityConfig {
                 authHttp
                         .requestMatchers(HttpMethod.GET, "/authorized").permitAll()
                         .requestMatchers(HttpMethod.GET, "/home").hasAnyAuthority("SCOPE_read", "SCOPE_write")
-                        .requestMatchers(HttpMethod.GET, "/admin").hasAuthority("SCOPE_write")
+                        .requestMatchers(HttpMethod.GET, "/admin").permitAll()
                         .anyRequest().authenticated()
         )
                 .csrf(AbstractHttpConfigurer::disable)
@@ -33,15 +29,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-  /*  @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build();
-
-        return new InMemoryUserDetailsManager(user);
-    }*/
 }
