@@ -16,14 +16,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests( authHttp ->
                 authHttp
+                        .requestMatchers("/").permitAll()
                         .requestMatchers(HttpMethod.GET, "/authorized").permitAll()
                         .requestMatchers(HttpMethod.GET, "/home").hasAnyAuthority("SCOPE_read", "SCOPE_write")
-                        .requestMatchers(HttpMethod.GET, "/admin").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/admin").authenticated()
                         .anyRequest().authenticated()
         )
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2Login(login -> login.loginPage("/oauth2/authorization/client-app"))
+                .oauth2Login(Customizer.withDefaults())
                 .oauth2Client(Customizer.withDefaults())
                 .oauth2ResourceServer(rs -> rs.jwt(Customizer.withDefaults()));
 

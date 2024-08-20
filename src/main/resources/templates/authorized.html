@@ -67,12 +67,9 @@
     </div>
 </nav>
 <div class="container">
-    <h1 class="text-center">Bienvenido a la pagina de administrador</h1>
     <div class="text-center">
-        <a class="btn btn-primary" th:href="@{/crud}">Ejecutar Acci&oacute;n </a>
-    </div>
-    <div class="text-center">
-        <div>Se ha inciado sesi&oacute;n correctamente</div>
+        <div>C&oacute;digo de autenticaci&oacute;</div>
+        <div th:text="${param.code}"></div>
     </div>
 </div>
 </body>
