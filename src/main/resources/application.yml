@@ -11,12 +11,22 @@ spring:
             client-id: client-app
             client-secret: 12345.medina#
             authorization-grant-type: authorization_code
-            redirect-uri: "http://127.0.0.1:8080/admin"
+            redirect-uri: "http://127.0.0.1:8080/authorized"
             scope:
               - openid
               - profile
               - read
-            client-name: client-app
+            client-name: client-local
+          github:
+            client-id: Ov23lig7DfGNfZvI1dgf
+            client-secret: a14d2efa87b1b1fdf3fca5bae344ac68d5628f73
         provider:
           spring:
             issuer-uri: "http://127.0.0.1:9000"
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

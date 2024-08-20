@@ -23,8 +23,13 @@ public class LoginController {
         return "home";
     }
 
+    @GetMapping("/")
+    public String inicio() {
+        return "home";
+    }
+
     @GetMapping("/admin")
-    public String admin(@RequestParam String code) {
+    public String admin(@RequestParam(required = false) String code) {
         logger.info("Codigo recibido=" + code);
         return "admin";
     }
